@@ -5,5 +5,7 @@ Hay que realizar un programa que dado un array de 10 números entre 0 y 100, inc
 la media, moda y mediana.
 
 **Hay que crear un repositorio común de github**
+
 **Hay que documentar bien el código**
+
 *Valora la claridad de código, algoritmos empleados y comentarios*
