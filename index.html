@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 1</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script defer src="scripts/script.js"></script>
+</head>
+<body>
+    <header>
+        <img src="images/edix_logo.png" alt="logo edix" class="logo">
+        <div>
+            <h1>Desarrollo Web en Entorno Cliente</h1> 
+        </div>
+        <div>
+            PLACEHOLDER
+        </div>
+    </header>
+
+    <h2>ACTIVIDAD 1</h2>
+
+    <section class="seccion_1">
+        <h3>Requerimiento 1</h3>
+        <p class="texto_1">
+            Realiza un programa en JavaScript que recorra un array de 10 números y calcule
+            la media aritmética de diez números. Los números deben de estar comprendidos entre 
+            el 0 y 100, si se detectara algún número fuera de ese rango no se tendría en cuenta 
+            para su cálculo.
+        </p>
+
+        <h3>Requerimiento 2</h3>
+        <p class="texto_1">
+            Calcular también la moda.
+        </p>
+
+        <h3>Requerimiento 3</h3>
+        <p class="texto_1">
+            Calcular también la mediana.
+        </p>
+    </section>
+
+    <section class="seccion_2">
+       <p class="texto_2">Introduce 10 números entre 0 y 100 (inclusives) y selecciona la opción que desees</p>
+
+       <div class="grid_seccion2">
+            <div class="contenedor_inputs">
+                <div class="input">
+                    1
+                    <input type="number" class="input_numero input_1">
+                </div>
+                <div class="input">
+                    2
+                    <input type="number" class="input_numero input_2">
+                </div>
+                <div class="input">
+                    3
+                    <input type="number" class="input_numero input_3">
+                </div>
+                <div class="input">
+                    4
+                    <input type="number" class="input_numero input_4">
+                </div>
+                <div class="input">
+                    5
+                    <input type="number" class="input_numero input_5">
+                </div>
+                <div class="input">
+                    6
+                    <input type="number" class="input_numero input_6">
+                </div>
+                <div class="input">
+                    7
+                    <input type="number" class="input_numero input_7">
+                </div>
+                <div class="input">
+                    8
+                    <input type="number" class="input_numero input_8">
+                </div>
+                <div class="input">
+                    9
+                    <input type="number" class="input_numero input_9">
+                </div>
+                <div class="input">
+                    10
+                    <input type="number" class="input_numero input_10">
+                </div>
+        </div>
+        
+        <table class="tabla_resultados">
+            <thead>
+                <tr>
+                    <th colspan="2">Resultados</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Números válidos</td>
+                    <td class="output output_validos"></td>
+                </tr>
+                <tr>
+                    <td>Ordenados</td>
+                    <td class="output output_ordenados"></td>
+                </tr>
+                <tr class="fila_media">
+                    <td>Media</td>
+                    <td class="output output_media"></td>
+                </tr>
+                <tr class="fila_moda">
+                    <td>Moda</td>
+                    <td class="output output_moda"></td>
+                </tr>
+                <tr class="fila_mediana">
+                    <td>Mediana</td>
+                    <td class="output output_mediana"></td>
+                </tr>
+            </tbody>
+        </table>
+          
+        <div class="contenedor_botones">
+            <button class="boton boton_media">Media</button>
+            <button class="boton boton_moda">Moda</button>
+            <button class="boton boton_mediana">Mediana</button>
+            <button class="boton boton_todas">Todas</button>
+            <button class="boton boton_borrar">Borrar</button>
+        </div>
+    </div>
+    </section>
+
+    <footer>
+        <p class="texto_footer_1">&copy; 2021 - Grupo de trabajo: "Los cuatro jinetes".</p>
+        
+        <div class="integrantes">
+            <div class="texto_footer_2">
+                    Lozano Bermejo, Miguel Ángel<br>
+                    Quiles Pomares, Álvaro<br>
+                    Ruiz Sanz, Raúl<br>
+                    Santos Sánchez, José Antonio<br>
+            </div>
+
+            <div class="contenedor_avatares">
+                <img src="images/avatar-migue.png" alt="migue" class="avatar">
+                <img src="images/avatar-alvaro.png" alt="alvaro" class="avatar">
+                <img src="images/avatar-jose.png" alt="jose" class="avatar">
+                <img src="images/avatar-raul.png" alt="raul" class="avatar">
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
