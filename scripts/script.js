@@ -56,7 +56,7 @@ function crearArray() {
 
 function mostrarValidos(numeros) {
     outputValidos.textContent = numeros.join(', ');
-    outputOrdenados.textContent = numeros.sort((a, b) => a - b).join(', ');
+    outputOrdenados.textContent = ordenarArray(numeros).join(', ');
 }
 
 //=====================================================================
@@ -70,15 +70,15 @@ function mostrarFilas() {
 //=====================================================================
 
 function mostrarTodas() {
-    calcularMedia(numeros);
-    calcularModa(numeros);
+    calculaMedia(numeros);
+    moda(numeros);
     calcularMediana(numeros);
 }
 
 //=====================================================================
 
 function mostrarMedia() {
-    calcularMedia(numeros);
+    calculaMedia(numeros);
     filaModa.style.display = "none";
     filaMediana.style.display = "none";
 
@@ -88,7 +88,7 @@ function mostrarMedia() {
 //=====================================================================
 
 function mostrarModa() {
-    calcularModa(numeros);
+    moda(numeros);
     filaMedia.style.display = "none";
     filaMediana.style.display = "none";
 }
@@ -111,47 +111,61 @@ function borrarOutput() {
 
 //=====================================================================
 
-function calcularMedia(numeros) {
-    const suma = numeros.reduce(function(accum, actual) {
-        return accum + actual;
-    }, 0);
-    const media = (suma / numeros.length).toFixed(1);
+function calculaMedia(numeros) {
+    //Variable que recoge la suma de los números del array
+    var suma = 0;
+
+    //Bucle para realizar la suma
+    for(let numero of numeros) {
+        suma +=numero
+    }
+
+    //Calculo de la media que recogemos en la variable media
+    //redondeada a dos decimales
+    let media = (suma / numeros.length).toFixed(2);
+    //Resultado que se muestra en el td de la tabla por del DOM
     outputMedia.textContent = media;
-    console.log(`Media: ${media}`);
+    //Resultado mostrado por consola.
+    console.log(`La MEDIA de los número comprendidos entre 0 y 100 es = ${media}`);
 }
 
 //=====================================================================
 
-function calcularModa(numeros) {
-    const frecuencias = {};     // tendrá ->  "keys": valorNumero , "values": frecuencia // ej:  1: 2, 2: 1, 3: 1, 4: 2
-    let modas = [];             // array vacío para modas
-    let frecuenciaMaxima = 0;   // frecuenciaMaxima comienza siendo 0
-    
-    numeros.forEach(function(num) {
-        // para cada numero, creamos una propiedad con el valor de ese número en el objeto "frecuencias" (si no existe)
-        // aumentamos el valor de la propiedad en 1, PERO si es la primera ocurrencia, como daría undefined => 1
-        frecuencias[num] = frecuencias[num] + 1 || 1;
-    });
+function moda(numeros) {
+    //Objeto vacio que se rellena con las frecuencias de números repetidos
+    let frecuencyTable = {};
+    // Numero maximo de repeticiones de un numero en sortedNumbers
+    let maxRepetitions = 0; 
+    // Array asociativo. Contiene los numero mas repetidos junto a su numero de repeticiones
+    let moda=[]; 
+    //ordenamos el array
+    let sortedNumbers = ordenarArray(numeros);
+     
+    //Se rrellena el frequencyTable. Donde la clave es el valor que se coge para
+    //el cálculo de la moda y el valor es el número de veces que se repite.
+    //Si la clave no existe el valor es uno, si existe le suma 1 más.
+    sortedNumbers.forEach(elem => frecuencyTable[elem] = frecuencyTable[elem] + 1 || 1);
 
-    // iteramos sobre el objeto de frecuencias
-    for(const key in frecuencias) {
-        // si el valor de la llave es superior al de la frecuenciaMaxima -> asignamos al array de modas el valor pasado a número
-        if(frecuencias[key] > frecuenciaMaxima) {
-            modas = [Number(key)];  
-            frecuenciaMaxima = frecuencias[key];
-        } else if(frecuencias[key] === frecuenciaMaxima) {
-            modas.push(Number(key));
+    //Con el bucle a través de la clave se valora si el valor de una determinada
+    //clave es mayor que la frecuencia máxima establecida o no.
+    for (const index in frecuencyTable){
+        if (frecuencyTable[index] > maxRepetitions){
+            moda = [Number(index)];
+            maxRepetitions = frecuencyTable[index];
+        }else if(frecuencyTable[index] === maxRepetitions){
+            moda.push(Number(index));
         }
     }
+    //Si el length de moda es igual al length del objeto frecuencyTable, 
+    //el array de moda se fija a vacio.
+    if(moda.length === Object.keys(frecuencyTable).length) moda = [];
 
-    // si todos los valores aparecen con la misma frecuencia -> no hay moda (array vacío)
-    if(modas.length === Object.keys(frecuencias).length) {
-        modas = [];
-    }
+    //Se muestra por consola
+    console.log(`La moda es: ${moda}`);
 
-    const moda = modas.join(', ');
+    //Se muestra por html
+    moda = moda.length <= 1?moda:moda.join(', ');
     outputModa.textContent = moda;
-    console.log(`Moda: ${moda}`);
 }
 
 //=====================================================================
@@ -159,12 +173,20 @@ function calcularModa(numeros) {
 function calcularMediana(numeros) {
     const medio = Math.floor(numeros.length / 2);
     // Ordenamos de menor a mayor:
-    const arrOrdenado = numeros.sort((a, b) => a - b);
+    const arrOrdenado = ordenarArray(numeros);
     const mediana = numeros.length % 2 !== 0 ? 
         arrOrdenado[medio] : ((arrOrdenado[medio-1] + arrOrdenado[medio]) / 2);
     
+    //Para mostrar por Html
     outputMediana.textContent = mediana;
-    console.log(`Mediana: ${mediana}`);
+    console.log(`La mediana del array es: ${mediana}`);
 }
 
+//=====================================================================
+function ordenarArray(numeros) {
+    //recogemos el array ordenado en una variable que retornamos
+    let arrayOrdenado = numeros.sort((a,b) => a-b);
+
+    return arrayOrdenado;
+}
 //=====================================================================
