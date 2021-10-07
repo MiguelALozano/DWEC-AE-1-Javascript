@@ -190,3 +190,19 @@ function ordenarArray(numeros) {
     return arrayOrdenado;
 }
 //=====================================================================
+
+function fecha() {
+    const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+    let fecha = new Date();
+    let dia = fecha.getDay();
+    let mes = meses[fecha.getMonth()];
+    let anio = fecha.getFullYear();
+
+   
+
+    let texto = document.getElementById("fecha").innerHTML = `<p>${dia} de ${mes} de ${anio}</p>`;
+
+    console.log(texto);
+
+    return texto;
+}
